@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ummay Maimona Chaman - AI Researcher, Biomedical Informatics, Full-Stack Developer. Portfolio showcasing publications, machine learning projects, and research at BRAC University.">
+    <meta name="keywords" content="Ummay Maimona Chaman, AI Researcher, Medical AI, Computer Science, Deep Learning, BRAC University, Portfolio">
+    <meta name="author" content="Ummay Maimona Chaman">
+    <title>Ummay Maimona Chaman | Research Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <!-- Backdrop Canvas for Interactive Particle Animation -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- Background Gradient Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>CHAMAN<span class="logo-accent">/&gt;</span>
+            </a>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#awards" class="nav-link">Achievements</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-grid">
+                <div class="hero-text-content">
+                    <div class="badge-container animate-fade-in">
+                        <span class="status-pill"><span class="pulse-dot"></span> Open for Research Collaboration</span>
+                    </div>
+                    <h1 class="hero-title animate-slide-up">
+                        UMMAY MAIMONA <span class="gradient-text">CHAMAN</span>
+                    </h1>
+                    <h2 class="hero-subtitle animate-slide-up-delay">
+                        Computer Science & Engineering Researcher at <span class="highlight">BRAC University</span>
+                    </h2>
+                    <p class="hero-bio animate-fade-in-delay">
+                        Specializing in AI for Healthcare, Federated Learning, and Multimodal Deep Learning framework development. Building explainable and robust intelligent systems to address real-world biomedical challenges.
+                    </p>
+                    
+                    <!-- Quick Stats Dashboard -->
+                    <div class="hero-stats">
+                        <div class="stat-card" data-stat="pubs">
+                            <span class="stat-num" id="stat-pubs">3+</span>
+                            <span class="stat-lbl">Publications</span>
+                        </div>
+                        <div class="stat-card" data-stat="projects">
+                            <span class="stat-num" id="stat-projects">15</span>
+                            <span class="stat-lbl">Projects</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="hero-actions animate-fade-in-delay">
+                        <a href="#publications" class="btn btn-primary">View Publications <i class="fa-solid fa-scroll"></i></a>
+                        <a href="#projects" class="btn btn-secondary">Explore Projects <i class="fa-solid fa-laptop-code"></i></a>
+                    </div>
+                </div>
+
+                <div class="hero-card-wrapper animate-fade-in">
+                    <!-- Glassmorphic Interactive Contact Card -->
+                    <div class="contact-glass-card" id="interactive-card">
+                        <div class="card-glow"></div>
+                        <div class="card-header">
+                            <img src="pic.png" alt="Ummay Maimona Chaman" class="avatar-img">
+                            <div class="card-header-info">
+                                <h3>Chaman</h3>
+                                <p>Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-body">
+                            <ul class="contact-list">
+                                <li>
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <a href="mailto:chamanmaimona@gmail.com" class="link-hover">chamanmaimona@gmail.com</a>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-phone"></i>
+                                    <a href="tel:+8801715003815" class="link-hover">+8801715003815</a>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-map-pin"></i>
+                                    <span>Dhaka, Bangladesh</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="social-grid">
+                                <a href="https://github.com/UmmayMaimonaChaman" target="_blank" rel="noopener noreferrer" class="social-icon-btn github" aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/ummay-maimona-chaman-b1368b284/" target="_blank" rel="noopener noreferrer" class="social-icon-btn linkedin" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://orcid.org/0009-0005-8864-6360" target="_blank" rel="noopener noreferrer" class="social-icon-btn orcid" aria-label="ORCID">
+                                    <i class="fa-brands fa-orcid"></i>
+                                </a>
+                                <a href="https://scholar.google.com/citations?user=laJ1Z0IAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" class="social-icon-btn scholar" aria-label="Google Scholar">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </a>
+                                <a href="https://ummaymaimonachaman.github.io/Myself_CHAMAN/" target="_blank" rel="noopener noreferrer" class="social-icon-btn portfolio-link" aria-label="Portfolio">
+                                    <i class="fa-solid fa-globe"></i>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Executive Summary Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">Executive <span class="gradient-text">Profile</span></h2>
+            <div class="glass-container grid-2-col">
+                <div class="summary-card">
+                    <h3>Focus &amp; Research Drive</h3>
+                    <p>I am an undergraduate researcher and software engineer passionate about applying deep learning architectures to clinical diagnostics, biomedical image analysis, and distributed healthcare setups. Currently wrapping up my B.Sc. in Computer Science &amp; Engineering at BRAC University, my academic focus spans federated learning in hospital environments, multimodal AI for early disease prediction, and explainable medical AI systems.</p>
+                    <p>Equally at building production-ready web applications and APIs, I architect full-stack systems from MERN-stack platforms to FastAPI microservices that bridge intelligent data pipelines with seamless user experiences. Whether pursuing a research-focused role in deep learning or a software engineering position in web development, I bring strong foundations in both domains.</p>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <i class="fa-solid fa-microscope"></i>
+                        <h4>Undergraduate Researcher</h4>
+                        <p>Biomedical Science and Engineering Research Center (BIOSE)</p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <h4>Research Director</h4>
+                        <p>BRAC University Research for Development Club (BUReD)</p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h4>Active Preprint Publications</h4>
+                        <p>Featured in medRxiv, ICT Express (Q1), QPAIN 2026, CERN</p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <h4>Full-Stack Architect</h4>
+                        <p>Deep expertise in MERN, Django, FastAPI & Docker</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications & Manuscripts Section -->
+        <section id="publications" class="section">
+            <h2 class="section-title">Publications & <span class="gradient-text">Manuscripts</span></h2>
+            
+            <div class="pub-filters">
+                <button class="pub-filter-btn active" data-filter="all">All</button>
+                <button class="pub-filter-btn" data-filter="review">Under Review</button>
+                <button class="pub-filter-btn" data-filter="accepted">Accepted / Published</button>
+            </div>
+
+            <div class="publications-list">
+                <!-- Publication 1 -->
+                <div class="pub-card" data-category="review">
+                    <div class="pub-badge review">Under Review</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">A twin-aware multimodal deep learning framework with optimized late fusion for early prediction of adolescent anxiety disorder.</h3>
+                        <p class="pub-authors">Taosif, M., <strong class="author-self">Chaman, U. M.</strong>, Prova, N. A., Taher, S. M., Alam, M. G. R., & Rahman, R.</p>
+                        <p class="pub-journal"><i class="fa-solid fa-book-open"></i> medRxiv. [Preprint] (Under Review at <strong>PLOS ONE</strong>)</p>
+                        <div class="pub-actions">
+                            <a href="https://www.medrxiv.org/content/10.64898/2026.03.13.26348360v1" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> medRxiv Preprint
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="pub-card" data-category="accepted">
+                    <div class="pub-badge accepted">Q1 Journal - Accepted</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Federated Learning in Healthcare: A Comprehensive Survey on Privacy, Scalability, and Clinical Applications.</h3>
+                        <p class="pub-authors">Noor, A., <strong class="author-self">Chaman, U. M.</strong>, & Kabir, M. S.</p>
+                        <p class="pub-journal"><i class="fa-solid fa-square-poll-vertical"></i> <strong>ICT Express</strong> (Q1 Journal)</p>
+                        <div class="pub-actions">
+                            <a href="https://doi.org/10.1016/j.icte.2026.05.011" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> ICT Express Journal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="pub-card" data-category="accepted">
+                    <div class="pub-badge accepted">Conference - Accepted</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Robust Multi-Backbone Hybrid Fusion for Chest X-Ray Pneumonia Detection.</h3>
+                        <p class="pub-authors">Kabir, M. S., Noor, A., <strong class="author-self">Chaman, U. M.</strong>, & Mehreen, N.</p>
+                        <p class="pub-journal"><i class="fa-solid fa-users"></i> <strong>QPAIN 2026 Conference</strong></p>
+                        <div class="pub-actions">
+                            <a href="https://drive.google.com/file/d/1Bd0FBixlv4ANEZp3-aaAfIJv3UyYFMRF/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                <i class="fa-solid fa-file-pdf"></i> View Preprint PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 4 -->
+                <div class="pub-card" data-category="accepted">
+                    <div class="pub-badge published">Conference - Published</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Smart Waste Solutions: Harnessing Technology for a Greener Future.</h3>
+                        <p class="pub-authors">Warda Andalib, T., Hafiz, N., Disha, N. A., Alam Omey, F., Labby, A., & <strong class="author-self">Chaman, U. M.</strong></p>
+                        <p class="pub-journal"><i class="fa-solid fa-earth-americas"></i> International Conference on Engineering, Management and Social Sciences 2024</p>
+                        <div class="pub-actions">
+                            <a href="https://drive.google.com/file/d/1haPqkJCSzXz0E3YeWF_VU489C7R9OIxN/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                <i class="fa-solid fa-file-pdf"></i> View Paper PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 5 -->
+                <div class="pub-card" data-category="accepted">
+                    <div class="pub-badge published">CERN Paper - Published</div>
+                    <div class="pub-content">
+                        <h3 class="pub-title">Ray Emission by the Interaction of Cold Atmospheric Plasma with High Beam Energy Electron-Positron.</h3>
+                        <p class="pub-authors"><strong class="author-self">Chaman, U. M.</strong>, et al.</p>
+                        <p class="pub-journal"><i class="fa-solid fa-atom"></i> Beamline for Schools 2021 (CERN)</p>
+                        <div class="pub-actions">
+                            <a href="https://www.researchgate.net/publication/374546954_Ray_Emission_by_the_Interaction_of_Cold_Atmospheric_Plasma_with_High_Beam_Energy_Electron-Positron_CERN_Beamline_for_Schools_2021" target="_blank" rel="noopener noreferrer" class="pub-link-btn">
+                                <i class="fa-brands fa-researchgate"></i> ResearchGate Publication
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Research & Leadership <span class="gradient-text">Experience</span></h2>
+            <div class="timeline">
+                
+                <!-- BIOSE Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-date">Jan 2024 — 2025</div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-subtitle">BRAC University</span>
+                        <h3 class="timeline-title">Undergraduate Researcher</h3>
+                        <h4 class="timeline-org">Biomedical Science and Engineering Research Center (BIOSE)</h4>
+                        <p class="timeline-location"><i class="fa-solid fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                        <ul class="experience-details">
+                            <li>Conducting AI-driven biomedical research in bioinformatics, computational biology, medical imaging, and disease diagnosis under faculty supervision.</li>
+                            <li>Curated and formatted a custom multimodal dataset for medical fall detection applications.</li>
+                            <li>Applied academic databases (PubMed, IEEE Xplore, ACM Digital Library) and reference workflows (Zotero, Mendeley) to compose manuscript literature reviews.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BUReD Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="timeline-date">Sep 2023 — Feb 2026</div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-subtitle">Leadership & Mentorship</span>
+                        <h3 class="timeline-title">Research Director</h3>
+                        <h4 class="timeline-org">BRAC University Research for Development Club (BUReD)</h4>
+                        <p class="timeline-location"><i class="fa-solid fa-folder-open"></i> Department: Research and Development</p>
+                        <ul class="experience-details">
+                            <li>Led research initiatives for undergraduate members, offering mentorship in research methodology, academic writing, and publication strategies.</li>
+                            <li>Organized technical workshops, research seminars, and student competitions to foster an active research environment.</li>
+                            <li>Contributed as compiler and editor for <em>BURed Reflection Magazine</em> (Vol. 2 & 3).</li>
+                            <li>Authored two accepted research articles:
+                                <ul>
+                                    <li><strong>“Pixel Prowess and Peril: Navigating Security Challenges in AI-Driven Editing”</strong> (Chaman, U. M., Nazifa, A. P., 2026)</li>
+                                    <li><strong>“Turning the Tide: Rethinking Plastic Waste Management in Bangladesh”</strong> (Chaman, U. M., Rizve, A., 2026)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ROBU Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="timeline-date">2022 — 2023</div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-subtitle">Robotics &amp; Embedded Systems</span>
+                        <h3 class="timeline-title">Apprentice</h3>
+                        <h4 class="timeline-org">BRAC University Robotics Club (ROBU)</h4>
+                        <p class="timeline-location"><i class="fa-solid fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                        <ul class="experience-details">
+                            <li>Gained hands-on experience in robotics hardware and circuit design, integrating sensors, microprocessors, and microcontrollers into functional prototypes.</li>
+                            <li>Successfully completed the <em>Robotics Basics</em> certification course organized by the BRACU Robotics Club, covering embedded systems and sensor integration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Technical <span class="gradient-text">Projects</span></h2>
+            
+            <div class="project-filters">
+                <button class="project-filter-btn active" data-filter="all">All Projects</button>
+                <button class="project-filter-btn" data-filter="hardware">Hardware &amp; Robotics</button>
+                <button class="project-filter-btn" data-filter="ai">AI / Medical AI</button>
+                <button class="project-filter-btn" data-filter="fullstack">Full-Stack</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Multilingual RAG Chatbot -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">Multilingual RAG Chatbot</h3>
+                        <div class="project-tech">
+                            <span>Python</span><span>FastAPI</span><span>FAISS</span><span>Tesseract OCR</span><span>Docker</span>
+                        </div>
+                        <p class="project-desc">Bengali/Banglish & English document intelligence agent. Employs Tesseract OCR for scans, FAISS indexing, and custom FastAPI serving. Deployed via Docker on Hugging Face.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/Rag-ChatBot" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for RAG Chatbot"><i class="fa-brands fa-github"></i> Source</a>
+                            <a href="https://huggingface.co/spaces/Chaman5204/rag-chatbot" target="_blank" rel="noopener noreferrer" aria-label="Live Demo for RAG Chatbot"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FaceGuard -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">FaceGuard</h3>
+                        <div class="project-tech">
+                            <span>PyTorch</span><span>MesoNet</span><span>Capsule Nets</span><span>XceptionNet</span>
+                        </div>
+                        <p class="project-desc">A deepfake image and video detection system. Blends MesoNet structures and Capsule networks to elevate validation accuracy against malicious facial morphs.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/FaceGuard-DeepfakeDetection-using-XceptionNet-and-GradCAM" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for FaceGuard"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unsupervised Neural Networks -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">Unsupervised SOM Nets</h3>
+                        <div class="project-tech">
+                            <span>Python</span><span>SOM</span><span>Autoencoders</span><span>NumPy</span>
+                        </div>
+                        <p class="project-desc">Self-Organizing Maps (SOM) and Stacked Autoencoder pipelines designed from scratch to uncover hidden patterns and cluster multi-genre musical features or medical datasets.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/Unsupervised-Neural-Network-for-Multi-Genre-Music-Generation" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for Unsupervised Neural Network"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ApneaSense -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">ApneaSense</h3>
+                        <div class="project-tech">
+                            <span>Python</span><span>XGBoost</span><span>SHAP</span><span>Scikit-Learn</span>
+                        </div>
+                        <p class="project-desc">A healthcare ensemble pipeline built for early stratification of sleep apnea risk. Implemented SHAP explainability matrices for clinical review and interpretation.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/ApneaSense-EnsembleXAI-for-Explainable-Sleep-Apnea-Risk-Detection" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for ApneaSense"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CNN Vision Classifier -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">CNN Image Workbench</h3>
+                        <div class="project-tech">
+                            <span>TensorFlow.js</span><span>React</span><span>GradCAM</span><span>JavaScript</span>
+                        </div>
+                        <p class="project-desc">A real-time image classifier dashboard running fully client-side on the browser. Features custom training layers, batch image loading, and active GradCAM visualizations.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/CNN-Image-Classifier" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for CNN Image Classifier"><i class="fa-brands fa-github"></i> Source</a>
+                            <a href="https://ummaymaimonachaman.github.io/CNN-Image-Classifier/" target="_blank" rel="noopener noreferrer" aria-label="Live Demo for CNN Image Classifier"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PatchCore Skin Cancer Classifier -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">PatchCore Skin Cancer Classifier</h3>
+                        <div class="project-tech">
+                            <span>PatchCore</span><span>PyTorch</span><span>Scikit-Learn</span><span>Python</span><span>OpenCV</span>
+                        </div>
+                        <p class="project-desc">PatchCore-based anomaly detection for skin cancer classification with comparative machine learning analysis. Benchmarks multiple ML models against PatchCore to evaluate detection accuracy on dermatological imaging datasets.</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1DjLo2ejEPAujt3pRHs5GSN2OWn8nXuID/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Code for PatchCore Skin Cancer"><i class="fa-brands fa-google-drive"></i> Code</a>
+                            <a href="https://www.youtube.com/watch?v=lNwwwZJLAbU" target="_blank" rel="noopener noreferrer" aria-label="Live Report for PatchCore Skin Cancer"><i class="fa-brands fa-youtube"></i> Report</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consumer Churn Prediction -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">Churn Predictor</h3>
+                        <div class="project-tech">
+                            <span>Python</span><span>Scikit-Learn</span><span>Pandas</span><span>Seaborn</span>
+                        </div>
+                        <p class="project-desc">Predictive model engine comparison using Random Forests, Logistic Regression, and Gradient Boosting. Conducted hyperparameter tuning to elevate recall on retention risk.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/Consumer-Churn-Prediction" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for Consumer Churn Prediction"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DataFlow Studio -->
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">DataFlow Studio</h3>
+                        <div class="project-tech">
+                            <span>Django</span><span>React</span><span>TypeScript</span><span>Pandas</span><span>Docker</span>
+                        </div>
+                        <p class="project-desc">A visual ETL pipeline builder enabling drag-and-drop construction of complex data transformations. Powered by Pandas with live preview support, a RESTful API and custom Suggester Node.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/DataFlow_Studio" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for DataFlow Studio"><i class="fa-brands fa-github"></i> Source</a>
+                            <a href="https://dataflow-studio-delta.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Live Demo for DataFlow Studio"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AgriNetwork -->
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">AgriNetwork</h3>
+                        <div class="project-tech">
+                            <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>WebSockets</span>
+                        </div>
+                        <p class="project-desc">A MERN-based agricultural networking platform. Integrated JWT auth, SSLCommerz payment portal, WebSockets for instant messaging, and automated GitHub Actions workflow.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/AgriNetwork" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for AgriNetwork"><i class="fa-brands fa-github"></i> Source</a>
+                            <a href="https://cse-471-agri-network.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Live Demo for AgriNetwork"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SkillPocket -->
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">SkillPocket</h3>
+                        <div class="project-tech">
+                            <span>MERN Stack</span><span>REST API</span><span>Node.js</span><span>MongoDB</span>
+                        </div>
+                        <p class="project-desc">A community skill exchange application with complete API endpoints, role-based scheduling dashboard, reviews structure, and strict validation checks.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/Skillpockets" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for SkillPocket"><i class="fa-brands fa-github"></i> Source</a>
+                            <a href="https://skillpockets-umc.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Live Demo for SkillPocket"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RxCare -->
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">RxCare Pharmacy</h3>
+                        <div class="project-tech">
+                            <span>PHP</span><span>MySQL</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                        <p class="project-desc">A full-featured pharmacy management software. Includes transactional billing modules, dynamic inventory tracking, role-based dashboards, and stock alert indicators.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/RxCare" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for RxCare"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CurveMaker -->
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">CurveMaker</h3>
+                        <div class="project-tech">
+                            <span>Flask</span><span>Python</span><span>SciPy</span><span>Matplotlib</span>
+                        </div>
+                        <p class="project-desc">A data interpolation dashboard. Implemented numerical interpolation algorithms using SciPy and Matplotlib with dynamic chart rendering and vector exports (SVG/PNG).</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/CurveMaker" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for CurveMaker"><i class="fa-brands fa-github"></i> Source</a>
+                            <a href="https://ummaymaimonachaman.github.io/CurveMaker/" target="_blank" rel="noopener noreferrer" aria-label="Live Demo for CurveMaker"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autonomous Restroom Management -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">Autonomous Restroom Management</h3>
+                        <div class="project-tech">
+                            <span>Arduino</span><span>IoT</span><span>Telegram API</span>
+                        </div>
+                        <p class="project-desc">An Arduino-controlled robot capable of navigating restroom automation like controlling water leakage, odor management, and notifying the manager via Telegram for maintenance alerts.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Judging Platform -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">Digital Judging Platform</h3>
+                        <div class="project-tech">
+                            <span>Microcontroller</span><span>Embedded Systems</span><span>C/C++</span>
+                        </div>
+                        <p class="project-desc">Worked as a team member and built a role-based voting and scoring platform featuring weighted votes, single-vote validation, administrative monitoring, and automated winner calculation with detailed score breakdowns.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman/CSE341/tree/main/Lab%20Project" target="_blank" rel="noopener noreferrer" aria-label="GitHub repo for Digital Judging Platform"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Plant Watering System -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-card-inner">
+                        <h3 class="project-name">Smart Plant Watering System</h3>
+                        <div class="project-tech">
+                            <span>Robotics</span><span>Autonomous</span><span>Arduino</span><span>Sensors</span>
+                        </div>
+                        <p class="project-desc">Worked as a team member and developed an autonomous irrigation robot with plant detection, distance-based localization, rain sensing, temperature-dependent watering, reservoir monitoring, and return-to-base logic powered by a custom navigation algorithm.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/UmmayMaimonaChaman" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <h2 class="section-title">Academic <span class="gradient-text">Education</span></h2>
+            <div class="edu-grid">
+                
+                <!-- BRAC University -->
+                <div class="edu-card glass-card">
+                    <div class="edu-header">
+                        <i class="fa-solid fa-graduation-cap edu-icon"></i>
+                        <div>
+                            <span class="edu-date">2022 — 2026 (Expected)</span>
+                            <h3>BRAC University</h3>
+                            <p class="edu-location">Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="edu-body">
+                        <h4 class="degree">Bachelor of Science in Computer Science and Engineering</h4>
+                        
+                        <div class="edu-detail-group">
+                            <h5>Undergraduate Thesis</h5>
+                            <p class="thesis-title"><em>"A twin-aware multimodal deep learning framework with optimized late fusion for early prediction of adolescent anxiety disorder"</em></p>
+                            <p class="thesis-status">Under review at <strong>PLOS ONE</strong>. Preprint online at <a href="https://www.medrxiv.org/content/10.64898/2026.03.13.26348360v1" target="_blank" rel="noopener noreferrer" class="text-link">medRxiv <i class="fa-solid fa-external-link-alt"></i></a></p>
+                            <p class="supervisor-details">
+                                Supervisor: <a href="https://scholar.google.com/citations?user=t4GrJR4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="supervisor-link">Dr. Md. Golam Rabiul Alam</a><br>
+                                Co-Supervisor: <a href="https://www.scopus.com/authid/detail.uri?authorId=57222382795" target="_blank" rel="noopener noreferrer" class="supervisor-link">Mr. Rafeed Rahman</a>
+                            </p>
+                        </div>
+
+                        <div class="edu-detail-group">
+                            <h5>Relevant Coursework</h5>
+                            <div class="course-chips">
+                                <span>Machine Learning</span><span>Deep Learning</span><span>Neural Networks</span><span>Computer Vision</span><span>Data Science</span><span>Algorithms</span><span>Robotics</span><span>Web Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holy Cross College -->
+                <div class="edu-card glass-card">
+                    <div class="edu-header">
+                        <i class="fa-solid fa-school edu-icon"></i>
+                        <div>
+                            <span class="edu-date">2019 — 2021</span>
+                            <h3>Holy Cross College</h3>
+                            <p class="edu-location">Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="edu-body">
+                        <h4 class="degree">Higher Secondary Certificate (HSC), Science</h4>
+                        <div class="cgpa-badge">GPA: <strong>5.00 / 5.00</strong></div>
+                    </div>
+                </div>
+
+                <!-- Monipur High School and College -->
+                <div class="edu-card glass-card">
+                    <div class="edu-header">
+                        <i class="fa-solid fa-school edu-icon"></i>
+                        <div>
+                            <span class="edu-date">2017 — 2019</span>
+                            <h3>Monipur High School and College</h3>
+                            <p class="edu-location">Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="edu-body">
+                        <h4 class="degree">Secondary School Certificate (SSC), Science</h4>
+                        <div class="cgpa-badge">GPA: <strong>5.00 / 5.00</strong></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            <div class="skills-container glass-container">
+                <div class="skills-category-tabs">
+                    <button class="skills-tab-btn active" data-tab="programming">Programming & Data</button>
+                    <button class="skills-tab-btn" data-tab="ml-dl">Machine Learning & DL</button>
+                    <button class="skills-tab-btn" data-tab="cv-healthcare">Computer Vision & Health</button>
+                    <button class="skills-tab-btn" data-tab="tools-deployment">Tools & Backend</button>
+                </div>
+                
+                <div class="skills-panels-wrapper">
+                    <!-- Panel 1: Programming & Data -->
+                    <div class="skills-panel active" id="programming">
+                        <div class="skill-group">
+                            <span class="skill-name">Python (Primary)</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">C/C++</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 75%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">R</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Pandas, NumPy, SciPy</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: ML & DL -->
+                    <div class="skills-panel" id="ml-dl">
+                        <div class="skill-group">
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">TensorFlow / Keras</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Scikit-learn</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Supervised & Unsupervised Learning</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Feature Engineering & Hyperparameter Tuning</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: CV & Health -->
+                    <div class="skills-panel" id="cv-healthcare">
+                        <div class="skill-group">
+                            <span class="skill-name">CNNs & RNNs</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Multimodal Learning & Late Fusion</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Federated Learning in Healthcare</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Explainable AI (SHAP, GradCAM)</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Biomedical Data Analysis & Anomaly Detection</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 82%;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Tools & Backend -->
+                    <div class="skills-panel" id="tools-deployment">
+                        <div class="skill-group">
+                            <span class="skill-name">Git & GitHub</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">FastAPI & Flask (Python APIs)</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Docker Containers</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">Linux / Unix Environment</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 78%;"></div></div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-name">LaTeX & Academic Publishing Workflows</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 92%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements & Honors Section -->
+        <section id="awards" class="section">
+            <h2 class="section-title">Honors, Awards & <span class="gradient-text">Certifications</span></h2>
+            <div class="awards-grid">
+                
+                <div class="awards-card glass-card">
+                    <h3>Honors &amp; Awards</h3>
+                    <ul class="awards-list">
+                        <li>
+                            <i class="fa-solid fa-star award-icon gold"></i>
+                            <div class="award-info">
+                                <h4>Pre-finalist</h4>
+                                <p>International Astronomy &amp; Astrophysics Competition (IAAC) (2022)</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-star award-icon silver"></i>
+                            <div class="award-info">
+                                <h4>Pre-finalist</h4>
+                                <p>International Youth Math Challenge (IYMC) (2021)</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-code award-icon hackerrank"></i>
+                            <div class="award-info">
+                                <h4>Silver Badge</h4>
+                                <p>HackerRank Problem Solving. View <a href="https://www.hackerrank.com/profile/chamanmaimona" target="_blank" rel="noopener noreferrer" class="text-link">Profile <i class="fa-solid fa-external-link"></i></a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-trophy award-icon gold"></i>
+                            <div class="award-info">
+                                <h4>Bronze Award</h4>
+                                <p>Duke of Edinburgh International Award Program (2023)</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-award award-icon silver"></i>
+                            <div class="award-info">
+                                <h4>Bronze Award</h4>
+                                <p>Queen's Commonwealth Essay Competition (2021)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>                  <!-- Certifications Column -->
+                <div class="awards-card glass-card">
+                    <h3>Trainings &amp; Certifications</h3>
+                    <ul class="awards-list">
+                        <li>
+                            <i class="fa-brands fa-python cert-icon programming-cert"></i>
+                            <div class="award-info">
+                                <h4>Python Programming</h4>
+                                <p>Kaggle, HackerRank</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-js cert-icon elements-ai"></i>
+                            <div class="award-info">
+                                <h4>JavaScript Foundations</h4>
+                                <p>Cisco Networking Academy</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-certificate cert-icon simplilearn"></i>
+                            <div class="award-info">
+                                <h4>Machine Learning Fundamentals</h4>
+                                <p>SimpliLearn</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-nodes cert-icon elements-ai"></i>
+                            <div class="award-info">
+                                <h4>Introduction to Artificial Intelligence</h4>
+                                <p>University of Helsinki</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-shield-halved cert-icon hackerrank"></i>
+                            <div class="award-info">
+                                <h4>Cybersecurity Fundamentals</h4>
+                                <p>IBM P-Tech</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-robot cert-icon programming-cert"></i>
+                            <div class="award-info">
+                                <h4>Robotics Basics</h4>
+                                <p>BRACU Robotics Club</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-google cert-icon simplilearn"></i>
+                            <div class="award-info">
+                                <h4>Digital Marketing Essentials</h4>
+                                <p>Google Digital Garage</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-code cert-icon elements-ai"></i>
+                            <div class="award-info">
+                                <h4>HTML &amp; Web Design</h4>
+                                <p>BUP IEEE WIE</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-wand-magic-sparkles cert-icon simplilearn"></i>
+                            <div class="award-info">
+                                <h4>Prompt Engineering Basics</h4>
+                                <p>Intellectium</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Ummay Maimona Chaman. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Core Javascript Code -->
+    <script src="script.js"></script>
+</body>
+</html>
