@@ -184,7 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const projects = document.getElementById("project-count");
     if (projects) projects.dataset.count = String(document.querySelectorAll("#project-grid .lab").length);
     const targets = nodes.map((el) => Number(String(el.dataset.count || el.textContent).replace(/[^\d]/g, "")) || 0);
-    let played = false;
+    const run = new WeakMap();
+    let wave = 0;
+    let visible = false;
 
     const paint = (el, value) => {
       el.textContent = String(Math.round(value));
@@ -195,9 +197,12 @@ document.addEventListener("DOMContentLoaded", () => {
         paint(el, target);
         return;
       }
+      const token = wave;
+      run.set(el, token);
       let current = 0;
-      const step = target / (2000 / 60);
+      const step = Math.max(target / (2000 / 60), 0.05);
       const tick = () => {
+        if (run.get(el) !== token) return;
         current += step;
         if (current >= target) paint(el, target);
         else {
@@ -210,20 +215,20 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const play = () => {
-      if (played) return;
-      played = true;
+      wave += 1;
       nodes.forEach((el, i) => climb(el, targets[i]));
     };
 
-    if (reduced || box.getBoundingClientRect().top < window.innerHeight * 0.9) play();
-    else {
+    if (reduced) {
+      nodes.forEach((el, i) => paint(el, targets[i]));
+      visible = true;
+    } else {
       nodes.forEach((el) => paint(el, 0));
       const watcher = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          play();
-          watcher.disconnect();
-        }
-      }, { threshold: 0.45 });
+        const hit = entries.some((entry) => entry.isIntersecting);
+        if (hit && !visible) play();
+        visible = hit;
+      }, { threshold: 0.4 });
       watcher.observe(box);
     }
 
@@ -239,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!Number.isFinite(value)) return;
       const index = nodes.indexOf(citations);
       if (index >= 0) targets[index] = value;
-      if (played) climb(citations, value);
+      if (visible) climb(citations, value);
     };
     const read = async (route) => {
       const response = await fetch(route);
@@ -609,6 +614,30 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.textAlign = "left";
       ctx.fillText("value", 8, h * 0.2);
       ctx.fillText("category", left, h * 0.92);
+    },
+    queue(ctx, w, h, t, mx) {
+      const names = ["A", "B", "C", "D"];
+      const y = h * (0.46 + (mx - 0.5) * 0.06);
+      const start = w * 0.18;
+      const gap = (w * 0.7) / (names.length - 1);
+      const served = Math.floor(t / 900) % names.length;
+      names.forEach((name, i) => {
+        const x = start + i * gap;
+        if (i < names.length - 1) {
+          ctx.strokeStyle = "rgba(62,240,200,0.55)";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(x + 18, y);
+          ctx.lineTo(x + gap - 18, y);
+          ctx.stroke();
+        }
+        const on = i === served;
+        node(ctx, x, y, on ? 14 : 10, on ? "#f0d48a" : "#3ef0c8", name);
+      });
+      ctx.fillStyle = "rgba(220,230,240,0.72)";
+      ctx.font = "11px system-ui, sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText("first served", 16, h * 0.2);
     },
     som(ctx, w, h, t, mx) {
       for (let i = 0; i < 5; i += 1) {
