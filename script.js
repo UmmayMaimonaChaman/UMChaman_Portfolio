@@ -1,5 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const themeBtn = document.getElementById("theme-toggle");
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    const day = theme === "day";
+    themeBtn.textContent = day ? "🌙" : "☀️";
+    themeBtn.setAttribute("aria-label", day ? "Switch to night" : "Switch to day");
+    try { localStorage.setItem("theme", theme); } catch (e) {}
+  };
+  let saved = "night";
+  try { saved = localStorage.getItem("theme") || "night"; } catch (e) {}
+  applyTheme(saved);
+  themeBtn.addEventListener("click", () => {
+    applyTheme(document.documentElement.dataset.theme === "day" ? "night" : "day");
+  });
 
   const toggle = document.getElementById("nav-toggle");
   const links = document.querySelector(".nav-links");
