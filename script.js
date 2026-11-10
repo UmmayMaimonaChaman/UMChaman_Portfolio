@@ -1098,22 +1098,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const render = () => {
       const n = orbs.length;
-      const narrow = window.matchMedia("(max-width: 720px)").matches;
-      const spacing = narrow ? 58 : 92;
+      const narrow = window.matchMedia("(max-width: 860px)").matches;
+      const slot = document.getElementById("orbit-window");
+      const room = slot ? slot.clientWidth : 320;
+      const spacing = narrow ? Math.max(48, Math.min(64, Math.floor(room / 4))) : 92;
       orbs.forEach((orb, i) => {
         let offset = i - index;
         if (offset > n / 2) offset -= n;
         if (offset < -n / 2) offset += n;
         const distance = Math.abs(offset);
         orb.classList.toggle("center", offset === 0);
+        orb.style.pointerEvents = narrow && distance > 1 ? "none" : "";
         if (offset === 0) {
-          orb.style.transform = "translateX(0) scale(1.45)";
+          orb.style.transform = "translateX(0) scale(1.28)";
           orb.style.opacity = "1";
           orb.style.zIndex = "10";
-            } else {
+        } else if (narrow && distance > 1) {
+          orb.style.transform = `translateX(${offset * spacing}px) scale(0.5)`;
+          orb.style.opacity = "0";
+          orb.style.zIndex = "0";
+        } else {
           const scale = Math.max(0.55, 1 - distance * 0.16);
           orb.style.transform = `translateX(${offset * spacing}px) scale(${scale})`;
-          orb.style.opacity = String(Math.max(0.18, 1 - distance * 0.28));
+          orb.style.opacity = String(Math.max(0.28, 1 - distance * 0.28));
           orb.style.zIndex = String(10 - distance);
         }
       });
