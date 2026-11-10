@@ -1075,13 +1075,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const software = projectSegs.filter((seg) => seg.dataset.family === "software");
     const hardware = projectSegs.filter((seg) => seg.dataset.family === "hardware");
     const opensource = projectSegs.filter((seg) => seg.dataset.family === "opensource");
-    const current = projectSegs.filter((seg) => seg.dataset.family === "current");
     const familyBar = document.createElement("div");
     familyBar.className = "seg-tabs";
     const subBar = tabsFor(software, labels);
-    [...hardware, ...opensource, ...current].forEach((seg) => { seg.hidden = true; });
-    const names = { software: "Software", hardware: "Hardware", opensource: "Open Source", current: "Current" };
-    const groups = { software, hardware, opensource, current };
+    [...hardware, ...opensource].forEach((seg) => { seg.hidden = true; });
+    const names = { software: "Software", hardware: "Hardware", opensource: "Open Source" };
+    const groups = { software, hardware, opensource };
     const pickFamily = (name) => {
       familyBar.querySelectorAll(".seg-tab").forEach((tab) => tab.classList.toggle("on", tab.dataset.for === name));
       subBar.hidden = name !== "software";
