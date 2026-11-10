@@ -639,6 +639,59 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.textAlign = "left";
       ctx.fillText("first served", 16, h * 0.2);
     },
+    retrieve(ctx, w, h, t, mx) {
+      const query = { x: w * (0.16 + mx * 0.08), y: h * 0.42 };
+      node(ctx, query.x, query.y, 12, "#f0d48a", "Query");
+      for (let i = 0; i < 4; i += 1) {
+        const x = w * (0.42 + i * 0.14);
+        const y = h * (0.28 + (i % 2) * 0.36 + Math.sin(t * 0.002 + i) * 0.02);
+        link(ctx, query, { x, y }, "rgba(62,240,200,0.45)");
+        node(ctx, x, y, i === 1 ? 10 : 7, i === 1 ? "#3ef0c8" : "#7eb6ff", "");
+      }
+    },
+    lucene(ctx, w, h, t) {
+      const rows = 5;
+      for (let i = 0; i < rows; i += 1) {
+        const y = h * (0.22 + i * 0.13);
+        const hit = Math.floor(t / 700) % rows === i;
+        ctx.fillStyle = hit ? "rgba(62,240,200,0.85)" : "rgba(126,182,255,0.35)";
+        ctx.fillRect(w * 0.16, y, w * (0.28 + (i % 3) * 0.12), 8);
+      }
+      ctx.fillStyle = "rgba(220,230,240,0.72)";
+      ctx.font = "11px system-ui, sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText("index", 16, h * 0.14);
+    },
+    rank(ctx, w, h, t, mx) {
+      const scores = [0.92, 0.74, 0.61, 0.48, 0.33];
+      const left = w * 0.18;
+      const top = h * 0.2;
+      const bottom = h * 0.82;
+      const slot = (w * 0.7) / scores.length;
+      const active = Math.min(scores.length - 1, Math.max(0, Math.floor(mx * scores.length)));
+      scores.forEach((value, i) => {
+        const height = (bottom - top) * value;
+        const x = left + i * slot;
+        ctx.fillStyle = i === active ? "#f0d48a" : "#3ef0c8";
+        ctx.fillRect(x, bottom - height, slot * 0.55, height);
+      });
+      ctx.fillStyle = "rgba(220,230,240,0.72)";
+      ctx.font = "11px system-ui, sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText("rank", 16, h * 0.14);
+    },
+    chain(ctx, w, h, t, mx) {
+      const steps = ["In", "Spin", "Weave", "Out"];
+      const y = h * 0.42;
+      const start = w * 0.16;
+      const gap = (w * 0.72) / (steps.length - 1);
+      steps.forEach((label, i) => {
+        const x = start + i * gap + (mx - 0.5) * 8;
+        if (i < steps.length - 1) link(ctx, { x, y }, { x: x + gap, y }, "rgba(62,240,200,0.6)", []);
+        const on = Math.floor(t / 800) % steps.length === i;
+        node(ctx, x, y, on ? 12 : 8, on ? "#f0d48a" : "#3ef0c8", label);
+      });
+    },
     som(ctx, w, h, t, mx) {
       for (let i = 0; i < 5; i += 1) {
         const y = h * (0.3 + i * 0.1);
@@ -999,7 +1052,9 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
           segments.forEach((item) => { item.hidden = item !== seg; });
           if (seg.dataset.family === "software") {
-            document.querySelectorAll("#project-grid .segment[data-family='hardware']").forEach((item) => { item.hidden = true; });
+            document.querySelectorAll("#project-grid .segment").forEach((item) => {
+              if (item.dataset.family !== "software") item.hidden = true;
+            });
           }
           bar.querySelectorAll(".seg-tab").forEach((tab) => tab.classList.toggle("on", tab === btn));
           decks.forEach((deck) => deck.reset());
@@ -1019,29 +1074,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectSegs = [...projects.querySelectorAll(":scope > .segment")];
     const software = projectSegs.filter((seg) => seg.dataset.family === "software");
     const hardware = projectSegs.filter((seg) => seg.dataset.family === "hardware");
+    const opensource = projectSegs.filter((seg) => seg.dataset.family === "opensource");
+    const current = projectSegs.filter((seg) => seg.dataset.family === "current");
     const familyBar = document.createElement("div");
     familyBar.className = "seg-tabs";
     const subBar = tabsFor(software, labels);
-    hardware.forEach((seg) => { seg.hidden = true; });
+    [...hardware, ...opensource, ...current].forEach((seg) => { seg.hidden = true; });
+    const names = { software: "Software", hardware: "Hardware", opensource: "Open Source", current: "Current" };
+    const groups = { software, hardware, opensource, current };
     const pickFamily = (name) => {
       familyBar.querySelectorAll(".seg-tab").forEach((tab) => tab.classList.toggle("on", tab.dataset.for === name));
-      const softwareOn = name === "software";
-      subBar.hidden = !softwareOn;
-      if (softwareOn) {
-        const current = subBar.querySelector(".seg-tab.on") || subBar.querySelector(".seg-tab");
-        current.click();
+      subBar.hidden = name !== "software";
+      if (name === "software") {
+        const selected = subBar.querySelector(".seg-tab.on") || subBar.querySelector(".seg-tab");
+        selected.click();
       } else {
-        software.forEach((seg) => { seg.hidden = true; });
-        hardware.forEach((seg, i) => { seg.hidden = i !== 0; });
+        Object.entries(groups).forEach(([key, segs]) => {
+          segs.forEach((seg, i) => { seg.hidden = key !== name || i !== 0; });
+        });
         decks.forEach((deck) => deck.reset());
       }
     };
-    ["software", "hardware"].forEach((name) => {
+    Object.keys(names).forEach((name) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "seg-tab" + (name === "software" ? " on" : "");
       btn.dataset.for = name;
-      btn.textContent = name === "software" ? "Software" : "Hardware";
+      btn.textContent = names[name];
       btn.addEventListener("click", () => pickFamily(name));
       familyBar.append(btn);
     });

@@ -443,8 +443,8 @@
     <section id="projects" class="section">
       <div class="section-head">
         <p class="index">03 — Projects</p>
-        <h2>Software and hardware, <em>segment by segment.</em></h2>
-        <p class="lede">Machine learning, deep learning, web, Python, OpenGL, neural networks, then hardware. GitHub is on the card, and a live demo when one is public.</p>
+        <h2>Software, hardware, and open source, <em>segment by segment.</em></h2>
+        <p class="lede">Machine learning, deep learning, web, Python, OpenGL, neural networks, then hardware and open source. Current Moncho work sits on its own tab. GitHub is on the card, and a live demo when one is public.</p>
       </div>
       <div id="project-grid">
 
@@ -833,6 +833,96 @@
                 <div class="lab-foot"></div>
                 <div class="lab-detail">
                   
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="segment" data-deck="opensource" data-family="opensource">
+          <h3>Open source</h3>
+          <div class="lab-grid">
+            <article class="lab" data-tags="ir python">
+              <div class="lab-stage" data-scene="retrieve">
+                <canvas></canvas>
+                <span class="lab-pill">Open source · Python</span>
+                <span class="lab-num">01</span>
+              </div>
+              <div class="lab-body">
+                <h3>Pyserini</h3>
+                <p>University of Waterloo task with Jimmy Lin, on the Castorini toolkit for reproducible retrieval with sparse and dense representations.</p>
+                <div class="chips"><span>Python</span><span>Retrieval</span><span>Waterloo</span></div>
+                <div class="lab-foot">
+                  <span class="links"><a class="record" href="https://github.com/UmmayMaimonaChaman/pyserini" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+                </div>
+                <div class="lab-detail">
+                  <p>Fork of Castorini’s Pyserini. The work is the Waterloo task set by Jimmy Lin, not a claim on the upstream project.</p>
+                  <p><a href="https://github.com/UmmayMaimonaChaman/pyserini" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://github.com/castorini/pyserini" target="_blank" rel="noopener noreferrer">Upstream</a></p>
+                </div>
+              </div>
+            </article>
+            <article class="lab" data-tags="ir">
+              <div class="lab-stage" data-scene="lucene">
+                <canvas></canvas>
+                <span class="lab-pill">Open source · Lucene</span>
+                <span class="lab-num">02</span>
+              </div>
+              <div class="lab-body">
+                <h3>Anserini</h3>
+                <p>The same Waterloo task on the Java side: Anserini, Jimmy Lin’s Lucene toolkit for reproducible information retrieval.</p>
+                <div class="chips"><span>Java</span><span>Lucene</span><span>Waterloo</span></div>
+                <div class="lab-foot">
+                  <span class="links"><a class="record" href="https://github.com/UmmayMaimonaChaman/anserini" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+                </div>
+                <div class="lab-detail">
+                  <p>Fork of Castorini’s Anserini, done as the University of Waterloo task with Jimmy Lin.</p>
+                  <p><a href="https://github.com/UmmayMaimonaChaman/anserini" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://github.com/castorini/anserini" target="_blank" rel="noopener noreferrer">Upstream</a></p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="segment" data-deck="moncho" data-family="current">
+          <h3>Current · Moncho.ai</h3>
+          <div class="lab-grid">
+            <article class="lab" data-tags="agentic">
+              <div class="lab-stage" data-scene="rank">
+                <canvas></canvas>
+                <span class="lab-pill">Moncho · Ranker</span>
+                <span class="lab-num">01</span>
+              </div>
+              <div class="lab-body">
+                <h3>Company Ranker</h3>
+                <p>Currently working. Score a firm against its sector’s published steps. Rank sorts the rows. It does not decide which step the firm keeps.</p>
+                <div class="chips"><span>Moncho.ai</span><span>PRD</span><span>Ranking</span></div>
+                <div class="lab-foot">
+                  <span class="links"><a class="record" href="https://moncho.ai/" target="_blank" rel="noopener noreferrer">Moncho.ai</a></span>
+                  <span class="status build">In progress</span>
+                </div>
+                <div class="lab-detail">
+                  <p>One of the two Moncho PRDs in progress. A reviewer still accepts or rejects each row. The ranker does not publish anything on its own.</p>
+                  <p><a href="https://moncho.ai/" target="_blank" rel="noopener noreferrer">Moncho.ai</a></p>
+                </div>
+              </div>
+            </article>
+            <article class="lab" data-tags="agentic">
+              <div class="lab-stage" data-scene="chain">
+                <canvas></canvas>
+                <span class="lab-pill">Moncho · Nodes</span>
+                <span class="lab-num">02</span>
+              </div>
+              <div class="lab-body">
+                <h3>Company-to-Node Mapper</h3>
+                <p>Currently working. Place directory firms on the published value-chain steps. Each step has its own bar, and a firm can sit on more than one.</p>
+                <div class="chips"><span>Moncho.ai</span><span>PRD</span><span>Value chain</span></div>
+                <div class="lab-foot">
+                  <span class="links"><a class="record" href="https://moncho.ai/" target="_blank" rel="noopener noreferrer">Moncho.ai</a></span>
+                  <span class="status build">In progress</span>
+                </div>
+                <div class="lab-detail">
+                  <p>The second Moncho PRD in progress. Firms are actor nodes and steps are activity nodes. An edge means the firm sits on that step. Nothing is marked approved from the mapper alone.</p>
+                  <p><a href="https://moncho.ai/" target="_blank" rel="noopener noreferrer">Moncho.ai</a></p>
                 </div>
               </div>
             </article>
@@ -1389,6 +1479,6 @@
     <div id="dialog-body"></div>
   </dialog>
 
-  <script src="script.js?v=22"></script>
+  <script src="script.js?v=23"></script>
 </body>
 </html>
