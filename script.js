@@ -955,32 +955,40 @@ document.addEventListener("DOMContentLoaded", () => {
   function mountFilters() {
     const note = document.getElementById("filter-note");
     let active = null;
+    const apply = () => {
+      document.querySelectorAll(".pill").forEach((p) => p.classList.toggle("on", active && p.dataset.filter === active));
+      document.querySelectorAll(".lab").forEach((lab) => {
+        const tags = (lab.dataset.tags || "").split(" ");
+        lab.classList.toggle("is-hidden", Boolean(active) && !tags.includes(active));
+      });
+      document.querySelectorAll(".empty").forEach((el) => {
+        const grid = document.getElementById(el.dataset.emptyFor);
+        const shown = [...grid.querySelectorAll(".segment:not([hidden]) .lab")];
+        const any = shown.some((lab) => !lab.classList.contains("is-hidden"));
+        el.hidden = any || shown.length === 0 || !active;
+      });
+      if (note) {
+        note.hidden = !active;
+        if (active) {
+          const pill = document.querySelector(`.pill[data-filter="${active}"]`);
+          const label = pill ? pill.textContent.trim() : active;
+          note.textContent = `Showing work tagged ${label}. Click the pill again to clear.`;
+        }
+      }
+      if (window.refreshDecks) window.refreshDecks();
+    };
+    window.clearLabFilter = () => {
+      active = null;
+      apply();
+    };
     document.querySelectorAll(".pill").forEach((pill) => {
       pill.addEventListener("click", () => {
         const key = pill.dataset.filter;
         active = active === key ? null : key;
-        document.querySelectorAll(".pill").forEach((p) => p.classList.toggle("on", active && p.dataset.filter === active));
-        document.querySelectorAll(".lab").forEach((lab) => {
-          const tags = (lab.dataset.tags || "").split(" ");
-          lab.classList.toggle("is-hidden", Boolean(active) && !tags.includes(active));
-        });
-        document.querySelectorAll(".empty").forEach((el) => {
-          const grid = document.getElementById(el.dataset.emptyFor);
-          const shown = [...grid.querySelectorAll(".segment:not([hidden]) .lab")];
-          const any = shown.some((lab) => !lab.classList.contains("is-hidden"));
-          el.hidden = any || shown.length === 0;
-        });
-        if (window.refreshDecks) window.refreshDecks();
-        if (active) {
-          const label = pill.textContent.trim();
-          note.hidden = false;
-          note.textContent = `Showing work tagged ${label}. Click the pill again to clear.`;
-        } else {
-          note.hidden = true;
-                }
-            });
-        });
-    }
+        apply();
+      });
+    });
+  }
 
   function mountDecks() {
     const labels = {
@@ -1018,6 +1026,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const render = () => {
         const items = cards();
         const size = pageSize();
+        const narrow = window.matchMedia("(max-width: 860px)").matches;
         const max = Math.max(0, items.length - size);
         index = Math.max(0, Math.min(index, max));
         const track = grid.querySelector(".segment:not([hidden]) .lab-grid");
@@ -1028,6 +1037,8 @@ document.addEventListener("DOMContentLoaded", () => {
         prev.hidden = next.hidden = idle;
         prev.disabled = index === 0;
         next.disabled = index >= max;
+        prev.textContent = narrow ? "‹ Previous" : "‹";
+        next.textContent = narrow ? "Next ›" : "›";
       };
       const step = (dir) => {
         index += dir * pageSize();
@@ -1035,6 +1046,14 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       prev.addEventListener("click", () => step(-1));
       next.addEventListener("click", () => step(1));
+      let touchX = 0;
+      frame.addEventListener("touchstart", (event) => {
+        touchX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      frame.addEventListener("touchend", (event) => {
+        const dx = event.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 48) step(dx < 0 ? 1 : -1);
+      }, { passive: true });
       decks.push({ reset() { index = 0; render(); }, render });
       render();
     };
@@ -1050,6 +1069,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.dataset.for = id;
         btn.textContent = names ? names[id] : seg.querySelector("h3").textContent;
         btn.addEventListener("click", () => {
+          if (window.clearLabFilter) window.clearLabFilter();
           segments.forEach((item) => { item.hidden = item !== seg; });
           if (seg.dataset.family === "software") {
             document.querySelectorAll("#project-grid .segment").forEach((item) => {
@@ -1082,6 +1102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const names = { software: "Software", hardware: "Hardware", opensource: "Open Source" };
     const groups = { software, hardware, opensource };
     const pickFamily = (name) => {
+      if (window.clearLabFilter) window.clearLabFilter();
       familyBar.querySelectorAll(".seg-tab").forEach((tab) => tab.classList.toggle("on", tab.dataset.for === name));
       subBar.hidden = name !== "software";
       if (name === "software") {

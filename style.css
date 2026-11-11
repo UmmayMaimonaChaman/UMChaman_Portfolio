@@ -813,16 +813,18 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.72); }
   .role { font-size: 15px; }
   .hero-actions { position: relative; z-index: 2; }
   .btn { min-height: 44px; display: inline-flex; align-items: center; background: #0c0c0c; }
-  .deck { position: relative; }
-  .deck-window { width: 100%; }
+  .deck { position: relative; flex-wrap: wrap; justify-content: space-between; }
+  .deck-window { width: 100%; flex: 1 1 100%; }
   .deck-arrow {
-    position: absolute;
-    top: 96px;
-    z-index: 4;
-    background: rgba(0, 0, 0, 0.78);
+    position: static;
+    width: auto;
+    min-width: 132px;
+    height: 44px;
+    margin-top: 14px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: #0c0c0c;
   }
-  .deck-arrow[data-dir="-1"] { left: 6px; }
-  .deck-arrow[data-dir="1"] { right: 6px; }
   #paper-grid .lab-body h3 { min-height: 0; }
   .stats dt { font-size: 32px; }
   .subhead, .path-grid h3 { font-size: 24px; }
